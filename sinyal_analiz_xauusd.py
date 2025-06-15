@@ -3,9 +3,14 @@ import requests
 from datetime import datetime
 
 def get_data():
-    url = "https://api.twelvedata.com/time_series?symbol=XAU/USD&interval=1h&outputsize=100&apikey=demo"
+    url = "https://api.twelvedata.com/time_series?symbol=XAU/USD&interval=1h&outputsize=100&apikey023335a787744744b184cc9ecc6805d2"
     response = requests.get(url)
     data = response.json()
+   
+    if "values" not in data:
+        print("API Hatası veya sınır aşıldı:", data)
+        exit()
+
     df = pd.DataFrame(data["values"])
     df["datetime"] = pd.to_datetime(df["datetime"])
     df.set_index("datetime", inplace=True)
