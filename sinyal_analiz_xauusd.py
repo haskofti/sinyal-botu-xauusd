@@ -3,7 +3,7 @@ import requests
 from datetime import datetime
 
 def get_data():
-    url = "https://api.twelvedata.com/time_series?symbol=XAU/USD&interval=1h&outputsize=100&apikey023335a787744744b184cc9ecc6805d2"
+    url = "https://api.twelvedata.com/time_series?symbol=XAU/USD&interval=1h&outputsize=100&apikey=023335a787744744b184cc9ecc6805d2"
     response = requests.get(url)
     data = response.json()
    
