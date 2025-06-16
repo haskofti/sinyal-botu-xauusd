@@ -1,6 +1,6 @@
 import pandas as pd
 import requests
-import smtplib
+import smtplib from email.message import EmailMessage
 from datetime import datetime
 
 INTERVALS = ["15min", "30min", "1h", "4h", "1day"]
@@ -76,13 +76,18 @@ def send_email(content):
     receiver = "hafi26@gmail.com"
 
     try:
+        msg = EmailMessage()
+        msg.set_content(content)
+        msg["Subject"] = "XAUUSD Çoklu Zaman Sinyal"
+        msg["From"] = sender
+        msg["To"] = receiver
+        
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(sender, password)
-        subject = "XAUUSD Çoklu Zaman Sinyal"
-        body = f"Subject: {subject}\n\n{content}"
-        server.sendmail(sender, receiver, body.encode("utf-8"))
+        server.send_message(msg)
         server.quit()
+        print("Mail başarıyla gönderildi.")
     except Exception as e:
         print("Mail gönderilemedi:", e)
 
@@ -95,4 +100,4 @@ if __name__ == "__main__":
             rapor += generate_signal(df, interval) + "\n"
     print(rapor)
     send_email(rapor)
-    "mail şifresi değiştirildi"
+    "mail sorunu düzeltmesi yapıldı"
