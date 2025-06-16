@@ -72,7 +72,7 @@ def send_email(content):
     if not EMAIL_GONDER:
         return
     sender = "hafi26@gmail.com"
-    password = "wtjl jnqo xqdc hyqh"  # Gmail uygulama şifresi girilmeli
+    password = "jxdb eksm rumw huqb"  # Gmail uygulama şifresi girilmeli
     receiver = "hafi26@gmail.com"
 
     try:
@@ -95,4 +95,4 @@ if __name__ == "__main__":
             rapor += generate_signal(df, interval) + "\n"
     print(rapor)
     send_email(rapor)
-    "UTF-8 e-posta düzeltildi"
+    "mail şifresi değiştirildi"
