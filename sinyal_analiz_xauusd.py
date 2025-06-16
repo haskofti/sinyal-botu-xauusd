@@ -81,7 +81,7 @@ def send_email(content):
         server.login(sender, password)
         subject = "XAUUSD Çoklu Zaman Sinyal"
         body = f"Subject: {subject}\n\n{content}"
-        server.sendmail(sender, receiver, body)
+        server.sendmail(sender, receiver, body.encode("utf-8"))
         server.quit()
     except Exception as e:
         print("Mail gönderilemedi:", e)
@@ -95,3 +95,4 @@ if __name__ == "__main__":
             rapor += generate_signal(df, interval) + "\n"
     print(rapor)
     send_email(rapor)
+    "UTF-8 e-posta düzeltildi"
