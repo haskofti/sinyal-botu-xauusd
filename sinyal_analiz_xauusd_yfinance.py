@@ -75,8 +75,7 @@ def generate_signal(df, interval):
             print(f"[{interval}] Entry: {entry:.2f} | Güncel: {current_price:.2f} | Fark: {fark:.2f}")
             if fark > 3:
                 return f"[{interval}] ⛔ Sinyal Geçersiz (Fiyat Uzak)\\nEntry: {entry:.2f}\\nGüncel: {current_price:.2f}"
-
-        return f"[{interval}] AL\\nGiriş: {entry:.2f}\\nTP: {tp:.2f}\\nSL: {sl:.2f}"
+                return f"[{interval}] AL\\nGiriş: {entry:.2f}\\nTP: {tp:.2f}\\nSL: {sl:.2f}"
 
 def send_email(content):
     if not EMAIL_GONDER:
