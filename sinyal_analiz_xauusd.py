@@ -24,6 +24,10 @@ def get_data(interval):
     df["datetime"] = pd.to_datetime(df["datetime"])
     df.set_index("datetime", inplace=True)
     df = df.astype(float)
+
+    print(f"[{interval}] İlk veri tarihi: {df.index[0]}, Son veri tarihi: {df.index[-1]}")
+    print(df.head(2))  # ilk 2 satırı göster
+
     return df
 
 def calculate_indicators(df):
