@@ -70,7 +70,15 @@ def generate_signal(df, interval):
         entry = latest["close"]
         tp = entry + (entry * 0.01)
         sl = entry - ((tp - entry) / 4)
+        
+        current_price = get_current_price()
+        if current_price is not None:
+            fark = abs(current_price - entry)
+            if fark > 3:  # 3 dolar veya daha fazla fark varsa sinyal geçersiz
+                return f"[{interval}] ⛔ Sinyal Geçersiz (Fiyat Uzak)\nEntry: {entry:.2f}\nŞu Anki Fiyat: {current_price:.2f}"
+        
         return f"[{interval}] AL\nGiriş: {entry:.2f}\nTP: {tp:.2f}\nSL: {sl:.2f}"
+        
     return f"[{interval}] Sinyal Yok"
 
 def send_email(content):
