@@ -1,7 +1,8 @@
 import pandas as pd
 import requests
-import smtplib from email.message import EmailMessage
+import smtplib 
 from datetime import datetime
+from email.message import EmailMessage
 
 INTERVALS = ["15min", "30min", "1h", "4h", "1day"]
 API_KEY = "023335a787744744b184cc9ecc6805d2"  # Kendi API anahtarınızla değiştirin
@@ -100,4 +101,4 @@ if __name__ == "__main__":
             rapor += generate_signal(df, interval) + "\n"
     print(rapor)
     send_email(rapor)
-    "mail sorunu düzeltmesi yapıldı"
+    "güncelleme yapıldı"
