@@ -6,7 +6,7 @@ import smtplib
 from email.message import EmailMessage
 
 INTERVALS = ["15m", "30m", "60m", "240m", "1d"]
-SYMBOL = "XAUUSD=X"  # Yahoo Finance sembolü
+SYMBOL = "XAUUSD=X"
 EMAIL_GONDER = True
 EMAIL_ADRESI = "hafi26@gmail.com"
 
@@ -74,8 +74,10 @@ def generate_signal(df, interval):
             fark = abs(current_price - entry)
             print(f"[{interval}] Entry: {entry:.2f} | Güncel: {current_price:.2f} | Fark: {fark:.2f}")
             if fark > 3:
-                return f"[{interval}] ⛔ Sinyal Geçersiz (Fiyat Uzak)\\nEntry: {entry:.2f}\\nGüncel: {current_price:.2f}"
-                return f"[{interval}] AL\\nGiriş: {entry:.2f}\\nTP: {tp:.2f}\\nSL: {sl:.2f}"
+                return f"[{interval}] ⛔ Sinyal Geçersiz (Fiyat Uzak)\nEntry: {entry:.2f}\nGüncel: {current_price:.2f}"
+
+        return f"[{interval}] AL\nGiriş: {entry:.2f}\nTP: {tp:.2f}\nSL: {sl:.2f}"
+    return f"[{interval}] Sinyal Yok"
 
 def send_email(content):
     if not EMAIL_GONDER:
@@ -110,4 +112,4 @@ if __name__ == "__main__":
             rapor += generate_signal(df, interval) + "\n"
     print(rapor)
     send_email(rapor)
-"güncellendi"
+    "güncelleme yapıldı"
