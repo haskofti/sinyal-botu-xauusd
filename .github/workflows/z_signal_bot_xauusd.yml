@@ -24,3 +24,4 @@ jobs:
 
     - name: Botu çalıştır
       run: python sinyal_analiz_xauusd.py
+      "adı değiştirildi"
