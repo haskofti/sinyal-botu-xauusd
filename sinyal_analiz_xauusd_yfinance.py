@@ -74,9 +74,7 @@ def generate_signal(df, interval):
             fark = abs(current_price - entry)
             print(f"[{interval}] Entry: {entry:.2f} | Güncel: {current_price:.2f} | Fark: {fark:.2f}")
             if fark > 3:
-                return f"[{interval}] ⛔ Sinyal Geçersiz (Fiyat Uzak)
-Entry: {entry:.2f}
-Güncel: {current_price:.2f}"
+                return f"[{interval}] ⛔ Sinyal Geçersiz (Fiyat Uzak)\\nEntry: {entry:.2f}\\nGüncel: {current_price:.2f}"
 
         return f"[{interval}] AL
 Giriş: {entry:.2f}
